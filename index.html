@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pintando a Palavra — Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="progress"></div>
+
+  <div class="quiz-container">
+    <img src="logo.png" alt="Pintando a Palavra" class="logo">
+
+    <!-- Passo 1 -->
+    <section class="quiz-step active">
+      <h1>Bem-vindo ao Pintando a Palavra</h1>
+      <p>Descubra como transformar o tempo de tela em <b>fé, aprendizado e diversão</b>.</p>
+      <button class="btn next">Começar agora</button>
+    </section>
+
+    <!-- Passo 2 -->
+    <section class="quiz-step">
+      <h2>Quantos anos tem seu filho(a)?</h2>
+      <div class="options">
+        <button class="btn option next">3 anos</button>
+        <button class="btn option next">4 anos</button>
+        <button class="btn option next">5 anos ou mais</button>
+      </div>
+    </section>
+
+    <!-- Passo 3 -->
+    <section class="quiz-step">
+      <h2>O que você gostaria para o tempo livre?</h2>
+      <div class="options">
+        <button class="btn option next">🎨 Divertido e educativo</button>
+        <button class="btn option next">✝️ Ensinar sobre Deus</button>
+        <button class="btn option next">👨‍👩‍👧 Momentos em família</button>
+        <button class="btn option next">🌟 Tudo isso</button>
+      </div>
+    </section>
+
+    <!-- Passo 4: Prova social -->
+    <section class="quiz-step">
+      <h2>O que os pais estão dizendo</h2>
+      <div class="testimonials">
+        <article class="testimonial-card">
+          <img src="avatar1.jpg" alt="Débora">
+          <div>
+            <p>“Antes era só vídeo sem propósito. Agora, ele pede para <b>colorir histórias da Bíblia comigo</b>.”</p>
+            <span>— Débora, mãe do Miguel (5)</span>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <img src="avatar2.jpg" alt="Marcos">
+          <div>
+            <p>“Achei que seria só mais um app, <b>mas funciona offline</b> e virou parte da nossa rotina.”</p>
+            <span>— Marcos, pai da Ester (4)</span>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <img src="avatar3.jpg" alt="Ana Paula">
+          <div>
+            <p>“Finalmente algo <b>cristão e educativo</b> que meu filho ama usar.”</p>
+            <span>— Ana Paula, mãe do João (6)</span>
+          </div>
+        </article>
+      </div>
+      <button class="btn next">Continuar</button>
+    </section>
+
+    <!-- Passo 5: Oferta -->
+    <section class="quiz-step">
+      <h2>🎁 Acesso ao Pintando a Palavra</h2>
+      <p class="highlight">✨ De acordo com as suas respostas, este é o <b>pacote mais recomendado</b> para sua família.</p>
+      <p class="price"><b>R$ 19,90</b> &nbsp; ou &nbsp; <b>R$ 17,99 no Pix</b></p>
+      <ul class="features">
+        <li>✔️ Histórias da Bíblia para colorir (App + PDF)</li>
+        <li>✔️ Atividades extras para aprender brincando</li>
+        <li>✔️ Funciona offline após o primeiro acesso</li>
+      </ul>
+      <p class="alert">⚠ No momento, o app pode estar instável em iOS (iPhone/iPad), mas funciona normalmente em Android e computador.</p>
+      <a class="btn cta" href="https://pintandoapalavra.vercel.app/login.html">Quero começar agora →</a>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
