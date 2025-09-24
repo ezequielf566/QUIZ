@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pintando a Palavra — Quiz</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1161028842613992');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1161028842613992&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
 </head>
 <body>
   <div id="progress"></div>
@@ -80,10 +98,22 @@
         <li>✔️ Funciona offline após o primeiro acesso</li>
       </ul>
       <p class="alert">⚠ No momento, o app pode estar instável em iOS (iPhone/iPad), mas funciona normalmente em Android e computador.</p>
-      <a class="btn cta" href="https://pintandoapalavra.vercel.app/login.html">Quero começar agora →</a>
+      <a id="btnQuizConcluir" class="btn cta" href="https://pintandoapalavra.vercel.app/login.html">Quero começar agora →</a>
     </section>
   </div>
 
   <script src="script.js"></script>
+
+  <!-- Evento Lead -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const btnQuiz = document.getElementById('btnQuizConcluir');
+      if(btnQuiz){
+        btnQuiz.addEventListener('click', function(){
+          fbq('track', 'Lead', {content_name: 'Quiz Concluido'});
+        });
+      }
+    });
+  </script>
 </body>
 </html>
