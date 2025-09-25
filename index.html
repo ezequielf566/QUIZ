@@ -16,12 +16,13 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1161028842613992');
+    fbq('init', '1105530308227786');
     fbq('track', 'PageView');
   </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1161028842613992&ev=PageView&noscript=1"
-  /></noscript>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1105530308227786&ev=PageView&noscript=1"/>
+  </noscript>
   <!-- End Meta Pixel Code -->
 </head>
 <body>
@@ -63,21 +64,21 @@
       <h2>O que os pais estão dizendo</h2>
       <div class="testimonials">
         <article class="testimonial-card">
-          <img src="avatar1.jpg" alt="Débora">
+          <img src="avatar1.jpg" alt="Débora, mãe do Miguel">
           <div>
             <p>“Antes era só vídeo sem propósito. Agora, ele pede para <b>colorir histórias da Bíblia comigo</b>.”</p>
             <span>— Débora, mãe do Miguel (5)</span>
           </div>
         </article>
         <article class="testimonial-card">
-          <img src="avatar2.jpg" alt="Marcos">
+          <img src="avatar2.jpg" alt="Marcos, pai da Ester">
           <div>
             <p>“Achei que seria só mais um app, <b>mas funciona off-line</b> e virou parte da nossa rotina.”</p>
             <span>— Marcos, pai da Ester (4)</span>
           </div>
         </article>
         <article class="testimonial-card">
-          <img src="avatar3.jpg" alt="Ana Paula">
+          <img src="avatar3.jpg" alt="Ana Paula, mãe do João">
           <div>
             <p>“Finalmente algo <b>cristão e educativo</b> que meu filho ama usar.”</p>
             <span>— Ana Paula, mãe do João (6)</span>
@@ -104,13 +105,14 @@
 
   <script src="script.js"></script>
 
-  <!-- Evento Lead -->
+  <!-- Evento Lead + InitiateCheckout -->
   <script>
     document.addEventListener('DOMContentLoaded', function(){
       const btnQuiz = document.getElementById('btnQuizConcluir');
       if(btnQuiz){
         btnQuiz.addEventListener('click', function(){
           fbq('track', 'Lead', {content_name: 'Quiz Concluido'});
+          fbq('track', 'InitiateCheckout', {content_name: 'Quiz Oferta'});
         });
       }
     });
