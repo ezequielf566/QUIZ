@@ -33,14 +33,15 @@
 
     <!-- Passo 1 -->
     <section class="quiz-step active">
-      <h1>Pintando a Palavra</h1>
-      <p>Descubra como transformar o tempo de tela em <b>fé, aprendizado e diversão</b>.</p>
-      <button class="btn next">Responder quiz</button>
+      <h1>Bem-vindo ao Pintando a Palavra</h1>
+      <p>Descubra em <b>menos de 1 minuto</b> como transformar o tempo de tela em <b>fé, aprendizado e diversão</b> para sua família.</p>
+      <button class="btn next">Começar Quiz →</button>
     </section>
 
     <!-- Passo 2 -->
     <section class="quiz-step">
       <h2>Quantos anos tem seu filho(a)?</h2>
+      <p>Isso nos ajuda a recomendar a melhor experiência 👇</p>
       <div class="options">
         <button class="btn option next">3 anos</button>
         <button class="btn option next">4 anos</button>
@@ -50,16 +51,16 @@
 
     <!-- Passo 3 -->
     <section class="quiz-step">
-      <h2>O que você gostaria para o tempo livre?</h2>
+      <h2>O que você mais deseja para o tempo livre do seu filho(a)?</h2>
       <div class="options">
-        <button class="btn option next">🎨 Divertido e educativo</button>
-        <button class="btn option next">✝️ Ensinar sobre Deus</button>
-        <button class="btn option next">👨‍👩‍👧 Momentos em família</button>
-        <button class="btn option next">🌟 Tudo isso</button>
+        <button class="btn option next">🎨 Atividades divertidas e educativas</button>
+        <button class="btn option next">✝️ Ensinar sobre Deus brincando</button>
+        <button class="btn option next">👨‍👩‍👧 Momentos especiais em família</button>
+        <button class="btn option next">🌟 Tudo isso junto!</button>
       </div>
     </section>
 
-    <!-- Passo 4: Prova social -->
+    <!-- Passo 4: Prova social (mantido) -->
     <section class="quiz-step">
       <h2>O que os pais estão dizendo</h2>
       <div class="testimonials">
@@ -85,21 +86,25 @@
           </div>
         </article>
       </div>
-      <button class="btn next">Continuar</button>
+      <button class="btn next">Continuar →</button>
     </section>
 
     <!-- Passo 5: Oferta -->
     <section class="quiz-step">
-      <h2>🎁 Acesso ao Pintando a Palavra</h2>
-      <p class="highlight">✨ De acordo com as suas respostas, este é o <b>pacote mais recomendado</b> para sua família.</p>
+      <h2>🎁 Seu acesso ao Pintando a Palavra está pronto</h2>
+      <p class="highlight">✨ Baseado nas suas respostas, este é o <b>pacote mais recomendado</b> para sua família.</p>
+      
       <p class="price"><b>R$ 19,90</b> &nbsp; ou &nbsp; <b>R$ 17,99 no Pix</b></p>
+      
       <ul class="features">
         <li>✔️ Histórias da Bíblia para colorir (App + PDF)</li>
         <li>✔️ Atividades extras para aprender brincando</li>
-        <li>✔️ Funciona offline após o primeiro acesso</li>
+        <li>✔️ Funciona off-line após o primeiro acesso</li>
       </ul>
-      <p class="alert">⚠ No momento, o app pode estar instável em iOS (iPhone/iPad), mas funciona normalmente em Android e computador.</p>
-      <a id="btnQuizConcluir" class="btn cta" href="https://pintandoapalavra.vercel.app/login.html">Quero começar agora →</a>
+      
+      <p class="alert">⚠ Oferta exclusiva para quem concluiu o quiz, disponível em sistema Android, tablet ou computador.</p>
+      
+      <a id="btnQuizConcluir" class="btn cta" href="https://pintando-a-palavra.pay.yampi.com.br/pay/INZKNQK27G">Quero começar agora →</a>
     </section>
   </div>
 
@@ -110,9 +115,13 @@
     document.addEventListener('DOMContentLoaded', function(){
       const btnQuiz = document.getElementById('btnQuizConcluir');
       if(btnQuiz){
-        btnQuiz.addEventListener('click', function(){
+        btnQuiz.addEventListener('click', function(e){
+          e.preventDefault(); // impede a saída imediata
           fbq('track', 'Lead', {content_name: 'Quiz Concluido'});
           fbq('track', 'InitiateCheckout', {content_name: 'Quiz Oferta'});
+          setTimeout(() => {
+            window.location.href = btnQuiz.href; // redireciona após 300ms
+          }, 300);
         });
       }
     });
