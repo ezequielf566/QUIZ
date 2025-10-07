@@ -6,6 +6,54 @@
   <title>Pintando a Palavra — Quiz</title>
   <link rel="stylesheet" href="style.css">
 
+  <style>
+    .btn.secondary {
+      background: #fff;
+      border: 2px solid #007BFF;
+      color: #007BFF;
+      margin-top: 10px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      display: inline-block;
+    }
+    .btn.secondary:hover {
+      background: #007BFF;
+      color: #fff;
+    }
+    .badge {
+      background: #ff9800;
+      color: #fff;
+      font-weight: bold;
+      padding: 6px 14px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+    .quiz-step {
+      text-align: center;
+    }
+    .price {
+      font-size: 1.4rem;
+      margin: 10px 0;
+    }
+    .android-note {
+      background: #fff9e6;
+      border: 1px dashed #ffca28;
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-top: 16px;
+      font-size: 15px;
+      color: #444;
+      line-height: 1.4;
+    }
+    .android-note small {
+      font-size: 13px;
+      color: #666;
+    }
+  </style>
+
   <!-- Meta Pixel Code -->
   <script>
     !function(f,b,e,v,n,t,s)
@@ -23,7 +71,6 @@
     <img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1105530308227786&ev=PageView&noscript=1"/>
   </noscript>
-  <!-- End Meta Pixel Code -->
 </head>
 <body>
   <div id="progress"></div>
@@ -34,7 +81,7 @@
     <!-- Passo 1 -->
     <section class="quiz-step active">
       <h1>Bem-vindo ao Pintando a Palavra</h1>
-      <p>Descubra em <b>menos de 1 minuto</b> como transformar o tempo de tela em <b>fé, aprendizado e diversão</b> para sua família.</p>
+      <p>Descubra em <b>menos de 1 minuto</b> como transformar o <b>tempo de tela</b> em <b>fé, aprendizado e diversão</b> para sua família.</p>
       <button class="btn next">Começar Quiz →</button>
     </section>
 
@@ -60,14 +107,14 @@
       </div>
     </section>
 
-    <!-- Passo 4: Prova social (mantido) -->
+    <!-- Passo 4 -->
     <section class="quiz-step">
       <h2>O que os pais estão dizendo</h2>
       <div class="testimonials">
         <article class="testimonial-card">
           <img src="avatar1.jpg" alt="Débora, mãe do Miguel">
           <div>
-            <p>“Antes era só vídeo sem propósito. Agora, ele pede para <b>colorir histórias da Bíblia comigo</b>.”</p>
+            <p>“Antes era só vídeos sem propósito, agora ele pede para <b>colorir histórias da Bíblia comigo</b>.”</p>
             <span>— Débora, mãe do Miguel (5)</span>
           </div>
         </article>
@@ -89,39 +136,60 @@
       <button class="btn next">Continuar →</button>
     </section>
 
-    <!-- Passo 5: Oferta -->
+    <!-- Passo 5: Versão Básica -->
     <section class="quiz-step">
-      <h2>🎁 Seu acesso ao Pintando a Palavra está pronto</h2>
-      <p class="highlight">✨ Baseado nas suas respostas, este é o <b>pacote mais recomendado</b> para sua família.</p>
-      
-      <p class="price"><b>R$ 19,99</b> &nbsp; ou com &nbsp; <b>15% no Pix</b></p>
-      
+      <h2>🟡 VERSÃO BÁSICA</h2>
+      <p class="price"><b>R$ 7</b> (pagamento único)</p>
       <ul class="features">
-        <li>✔️ Histórias da Bíblia para colorir (App + PDF)</li>
-        <li>✔️ Atividades extras para aprender brincando</li>
-        <li>✔️ Funciona off-line após o primeiro acesso</li>
+        <li>✔️ Mais de 100 páginas em PDF de artes bíblicas</li>
+        <li>✔️ 40 páginas em PDF de atividades</li>
+        <li>✔️ Capas ilustradas dos livrinhos</li>
+        <li>✔️ Para imprimir e colorir em casa</li>
       </ul>
-      
-      <p class="alert">⚠ Oferta exclusiva para quem concluiu o quiz, disponível em sistema Android, tablet ou computador.</p>
-      
-      <a id="btnQuizConcluir" class="btn cta" href="https://pay.kiwify.com.br/kJal7Gv">Quero começar agora →</a>
+      <p class="alert">Perfeita para começar de forma simples, apenas com os PDFs.</p>
+      <a id="btnBasica" class="btn cta" href="https://pay.kiwify.com.br/9PF5QKV">Quero esta versão →</a>
+      <br>
+      <a class="btn secondary next">👉 Melhor oferta</a>
+    </section>
+
+    <!-- Passo 6: Versão Completa -->
+    <section class="quiz-step">
+      <div class="badge">🔥 Melhor escolha</div>
+      <h2>🔵 VERSÃO COMPLETA</h2>
+      <p class="price"><b>R$ 16,90</b> (no pix)</p>
+      <ul class="features">
+        <li>✔️ + de 100 páginas em PDF de artes bíblicas</li>
+        <li>✔️ + de 120 páginas em PDF de atividades</li>
+        <li><b>✔️ Aplicativo para colorir no celular, tablet ou computador</b></li>
+        <li>✔️ Funciona sem internet</li>
+      </ul>
+      <p class="alert">A melhor escolha! Um pacote completo: colorir no app, imprimir os PDFs e se divertir off-line.</p>
+
+      <div class="android-note">
+        ⚙️ <b>Disponível para Android e Windows!</b><br>
+        Use no celular, tablet ou computador.<br>
+        <small>(Não disponível para iPhone, iPad ou Mac.)</small>
+      </div>
+
+      <a id="btnCompleta" class="btn cta" href="https://pay.kiwify.com.br/kJal7Gv">Quero a versão completa →</a>
     </section>
   </div>
 
   <script src="script.js"></script>
 
-  <!-- Evento Lead + InitiateCheckout -->
+  <!-- Eventos Pixel -->
   <script>
     document.addEventListener('DOMContentLoaded', function(){
-      const btnQuiz = document.getElementById('btnQuizConcluir');
-      if(btnQuiz){
-        btnQuiz.addEventListener('click', function(e){
-          e.preventDefault(); // impede a saída imediata
-          fbq('track', 'Lead', {content_name: 'Quiz Concluido'});
-          fbq('track', 'InitiateCheckout', {content_name: 'Quiz Oferta'});
-          setTimeout(() => {
-            window.location.href = btnQuiz.href; // redireciona após 300ms
-          }, 300);
+      const btnBasica = document.getElementById('btnBasica');
+      const btnCompleta = document.getElementById('btnCompleta');
+      if(btnBasica){
+        btnBasica.addEventListener('click', function(){
+          fbq('track', 'InitiateCheckout', {content_name: 'Checkout Básica'});
+        });
+      }
+      if(btnCompleta){
+        btnCompleta.addEventListener('click', function(){
+          fbq('track', 'InitiateCheckout', {content_name: 'Checkout Completa'});
         });
       }
     });
