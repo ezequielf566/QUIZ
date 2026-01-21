@@ -1,198 +1,507 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pintando a Palavra — Quiz</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Avaliação Tributária Inicial - Identifique riscos e oportunidades.">
+    <title>Avaliação Tributária | Consultoria Especializada</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    .btn.secondary {
-      background: #fff;
-      border: 2px solid #007BFF;
-      color: #007BFF;
-      margin-top: 10px;
-      padding: 10px 18px;
-      border-radius: 8px;
-      font-weight: bold;
-      display: inline-block;
-    }
-    .btn.secondary:hover {
-      background: #007BFF;
-      color: #fff;
-    }
-    .badge {
-      background: #ff9800;
-      color: #fff;
-      font-weight: bold;
-      padding: 6px 14px;
-      border-radius: 20px;
-      display: inline-block;
-      margin-bottom: 12px;
-      font-size: 0.9rem;
-    }
-    .quiz-step {
-      text-align: center;
-    }
-    .price {
-      font-size: 1.4rem;
-      margin: 10px 0;
-    }
-    .android-note {
-      background: #fff9e6;
-      border: 1px dashed #ffca28;
-      border-radius: 10px;
-      padding: 10px 14px;
-      margin-top: 16px;
-      font-size: 15px;
-      color: #444;
-      line-height: 1.4;
-    }
-    .android-note small {
-      font-size: 13px;
-      color: #666;
-    }
-  </style>
+    <style>
+        /* ========================================
+        SISTEMA DE DESIGN
+        ========================================
+        */
+        :root {
+            --primary: #0a192f;
+            --primary-light: #172a45;
+            --accent: #c19b67;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --bg-body: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-  <!-- Meta Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1105530308227786');
-    fbq('track', 'PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1105530308227786&ev=PageView&noscript=1"/>
-  </noscript>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, .logo-text {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========================================
+        HEADER & LOGO (SVG + TYPO)
+        ========================================
+        */
+        header {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .logo-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtext {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-top: -8px;
+        }
+
+        /* ========================================
+        COMPONENTES DE INTERFACE
+        ========================================
+        */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding-bottom: 60px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 48px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--border);
+            width: 100%;
+            min-height: 450px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        /* Barra de Progresso */
+        .progress-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--border);
+            border-radius: 8px 8px 0 0;
+            overflow: hidden;
+            display: none;
+        }
+
+        #progress-bar {
+            height: 100%;
+            background: var(--accent);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-block;
+            padding: 18px 32px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(10, 25, 47, 0.2);
+        }
+
+        .btn-whatsapp {
+            background-color: #25d366;
+            color: var(--white);
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128c7e;
+            transform: translateY(-2px);
+        }
+
+        /* ========================================
+        ESTADOS DO QUIZ (START, QUESTIONS, RESULT)
+        ========================================
+        */
+        
+        /* Intro */
+        #intro-screen {
+            text-align: center;
+        }
+
+        .card h1 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            font-size: 1.05rem;
+        }
+
+        .features-list {
+            text-align: left;
+            max-width: 300px;
+            margin: 0 auto 40px;
+            list-style: none;
+        }
+
+        .features-list li {
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dark);
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Questionário */
+        #quiz-screen {
+            display: none;
+            opacity: 0;
+        }
+
+        .question-title {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 32px;
+            line-height: 1.3;
+        }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 20px 24px;
+            border-radius: 6px;
+            text-align: left;
+            font-size: 1rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .option-btn:hover {
+            border-color: var(--accent);
+            background: #fffcf9;
+            padding-left: 30px;
+        }
+
+        .option-btn::after {
+            content: "→";
+            opacity: 0;
+            transition: var(--transition);
+            color: var(--accent);
+        }
+
+        .option-btn:hover::after {
+            opacity: 1;
+        }
+
+        /* Resultado */
+        #result-screen {
+            display: none;
+            text-align: center;
+            opacity: 0;
+        }
+
+        .result-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        /* ========================================
+        ANIMATIONS
+        ========================================
+        */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s forwards;
+        }
+
+        /* ========================================
+        FOOTER
+        ========================================
+        */
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+        }
+
+        .disclaimer {
+            margin-top: 8px;
+            font-size: 0.75rem;
+            opacity: 0.8;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ========================================
+        RESPONSIVIDADE
+        ========================================
+        */
+        @media (max-width: 600px) {
+            .card {
+                padding: 32px 24px;
+                min-height: auto;
+            }
+            .card h1 { font-size: 1.8rem; }
+            .question-title { font-size: 1.3rem; }
+        }
+    </style>
 </head>
 <body>
-  <div id="progress"></div>
 
-  <div class="quiz-container">
-    <img src="logo.png" alt="Pintando a Palavra" class="logo">
+    <header>
+        <div class="container">
+            <a href="#" class="logo-wrap">
+                <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="20" y="20" width="60" height="60" stroke="#0a192f" stroke-width="2"/>
+                    <path d="M50 30V70" stroke="#0a192f" stroke-width="2"/>
+                    <path d="M35 45L50 30L65 45" stroke="#c19b67" stroke-width="3"/>
+                    <path d="M35 65H65" stroke="#0a192f" stroke-width="2"/>
+                </svg>
+                <span class="logo-text">Advocacia Tributária</span>
+                <span class="logo-subtext">Estrategistas Jurídicos</span>
+            </a>
+        </div>
+    </header>
 
-    <!-- Passo 1 -->
-    <section class="quiz-step active">
-      <h1>Pintando a Palavra</h1>
-      <p>Descubra em <b>menos de 1 minuto</b> como transformar o <b>tempo de tela</b> em <b>fé, aprendizado e diversão</b> para sua família.</p>
-      <button class="btn next">Começar Quiz →</button>
-    </section>
+    <main>
+        <div class="container">
+            <div class="card" id="main-container">
+                <div class="progress-container" id="progress-wrapper">
+                    <div id="progress-bar"></div>
+                </div>
 
-    <!-- Passo 2 -->
-    <section class="quiz-step">
-      <h2>Quantos anos tem seu filho(a)?</h2>
-      <p>Isso nos ajuda a recomendar a melhor experiência 👇</p>
-      <div class="options">
-        <button class="btn option next">3 anos</button>
-        <button class="btn option next">4 anos</button>
-        <button class="btn option next">5 anos ou mais</button>
-      </div>
-    </section>
+                <div id="intro-screen" class="fade-in">
+                    <h1>Avaliação Tributária Inicial</h1>
+                    <p>Responda algumas perguntas rápidas para entender possíveis riscos ou oportunidades no seu cenário tributário.</p>
+                    
+                    <ul class="features-list">
+                        <li>Leve menos de 2 minutos</li>
+                        <li>Conteúdo educativo</li>
+                        <li>Sem compromisso</li>
+                    </ul>
 
-    <!-- Passo 3 -->
-    <section class="quiz-step">
-      <h2>O que você mais deseja para o tempo livre do seu filho(a)?</h2>
-      <div class="options">
-        <button class="btn option next">🎨 Atividades divertidas e educativas</button>
-        <button class="btn option next">✝️ Ensinar sobre Deus brincando</button>
-        <button class="btn option next">👨‍👩‍👧 Momentos especiais em família</button>
-        <button class="btn option next">🌟 Tudo isso junto!</button>
-      </div>
-    </section>
+                    <button class="btn btn-primary" onclick="startQuiz()">Iniciar avaliação</button>
+                    
+                    <div class="disclaimer" style="margin-top: 40px;">
+                        Conteúdo informativo. Não substitui análise jurídica individual.
+                    </div>
+                </div>
 
-    <!-- Passo 4 -->
-    <section class="quiz-step">
-      <h2>O que os pais estão dizendo</h2>
-      <div class="testimonials">
-        <article class="testimonial-card">
-          <img src="avatar1.jpg" alt="Débora, mãe do Miguel">
-          <div>
-            <p>“Antes era só vídeos sem propósito, agora ele pede para <b>colorir histórias da Bíblia comigo</b>.”</p>
-            <span>— Débora, mãe do Miguel (5)</span>
-          </div>
-        </article>
-        <article class="testimonial-card">
-          <img src="avatar2.jpg" alt="Marcos, pai da Ester">
-          <div>
-            <p>“Achei que seria só mais um app, <b>mas funciona off-line</b> e virou parte da nossa rotina.”</p>
-            <span>— Marcos, pai da Ester (4)</span>
-          </div>
-        </article>
-        <article class="testimonial-card">
-          <img src="avatar3.jpg" alt="Ana Paula, mãe do João">
-          <div>
-            <p>“Finalmente algo <b>cristão e educativo</b> que meu filho ama usar.”</p>
-            <span>— Ana Paula, mãe do João (6)</span>
-          </div>
-        </article>
-      </div>
-      <button class="btn next">Continuar →</button>
-    </section>
+                <div id="quiz-screen">
+                    <h2 class="question-title" id="question-text">Pergunta aqui?</h2>
+                    <div class="options-grid" id="options-container">
+                        </div>
+                </div>
 
-    <!-- Passo 5: Versão Básica -->
-    <section class="quiz-step">
-      <h2>🟡 VERSÃO BÁSICA</h2>
-      <p class="price"><b>R$ 5</b> (promoção de lançamento!)</p>
-      <ul class="features">
-        <li>✔️ + de 100 páginas em PDF de artes bíblicas</li>
-        <li>✔️ + de 50 páginas em PDF de atividades</li>
-        <li>✔️ Capas ilustradas dos livrinhos</li>
-        <li>✔️ Para imprimir e colorir em casa</li>
-      </ul>
-      <p class="alert">Perfeita para começar de forma simples, apenas com os PDFs.</p>
-      <a id="btnBasica" class="btn cta" href="https://pay.kiwify.com.br/9PF5QKV">Quero esta versão →</a>
-      <br>
-      <a class="btn secondary next">👉 Melhor oferta</a>
-    </section>
+                <div id="result-screen">
+                    <div class="result-icon">⚖️</div>
+                    <h1>Resultado da Avaliação</h1>
+                    <p>Com base nas suas respostas, é possível que existam pontos de atenção no seu cenário tributário. Uma análise individual ajuda a compreender riscos e oportunidades com mais clareza.</p>
+                    
+                    <a href="https://wa.me/559284899786" target="_blank" class="btn btn-whatsapp">
+                        Conversar no WhatsApp (sem compromisso)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
 
-    <!-- Passo 6: Versão Completa -->
-    <section class="quiz-step">
-      <div class="badge">🔥 Melhor escolha</div>
-      <h2>🔵 VERSÃO COMPLETA</h2>
-      <p class="price"><b>R$ 9,99</b> (por tempo limitado!)</p>
-      <ul class="features">
-        <li>✔️ + de 100 páginas em PDF de artes bíblicas</li>
-        <li>✔️ + de 150 páginas em PDF de atividades</li>
-        <li><b>✔️ Aplicativo para colorir no celular, tablet ou computador</b></li>
-        <li>✔️ Funciona sem internet</li>
-      </ul>
-      <p class="alert">A melhor escolha! Um pacote completo: colorir no app, imprimir os PDFs e se divertir off-line.</p>
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> — Conteúdo informativo. Atendimento mediante análise do caso.</p>
+        </div>
+    </footer>
 
-      <div class="android-note">
-        ⚙️ <b>Disponível para Android e Windows!</b><br>
-        Use no celular, tablet ou computador.<br>
-        <small>(Não disponível para iPhone, iPad ou Mac.)</small>
-      </div>
+    <script>
+        // Dados do Quiz
+        const quizData = [
+            {
+                question: "Você atua como:",
+                options: ["Pessoa Física", "Microempresa / MEI", "Empresa"]
+            },
+            {
+                question: "Sua empresa já enfrentou alguma das situações abaixo?",
+                options: ["Auto de infração", "Dúvidas sobre regime tributário", "Carga tributária elevada", "Nunca analisou"]
+            },
+            {
+                question: "Você já realizou algum planejamento tributário?",
+                options: ["Sim", "Não", "Não sei exatamente"]
+            },
+            {
+                question: "Sua empresa acompanha mudanças na legislação tributária?",
+                options: ["Sim, regularmente", "Apenas quando surge um problema", "Não acompanha"]
+            },
+            {
+                question: "Gostaria de entender melhor seu cenário tributário?",
+                options: ["Sim", "Talvez", "Apenas estou me informando"]
+            }
+        ];
 
-      <a id="btnCompleta" class="btn cta" href="https://pay.kiwify.com.br/kJal7Gv">Quero a versão completa →</a>
-    </section>
-  </div>
+        let currentStep = 0;
 
-  <script src="script.js"></script>
+        // Elementos DOM
+        const introScreen = document.getElementById('intro-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const progressWrapper = document.getElementById('progress-wrapper');
+        const progressBar = document.getElementById('progress-bar');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
 
-  <!-- Eventos Pixel -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      const btnBasica = document.getElementById('btnBasica');
-      const btnCompleta = document.getElementById('btnCompleta');
-      if(btnBasica){
-        btnBasica.addEventListener('click', function(){
-          fbq('track', 'InitiateCheckout', {content_name: 'Checkout Básica'});
-        });
-      }
-      if(btnCompleta){
-        btnCompleta.addEventListener('click', function(){
-          fbq('track', 'InitiateCheckout', {content_name: 'Checkout Completa'});
-        });
-      }
-    });
-  </script>
+        // Inicializar Ano
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Iniciar Quiz
+        function startQuiz() {
+            introScreen.style.display = 'none';
+            quizScreen.style.display = 'block';
+            progressWrapper.style.display = 'block';
+            setTimeout(() => {
+                quizScreen.style.opacity = '1';
+                showQuestion();
+            }, 50);
+        }
+
+        // Mostrar Pergunta
+        function showQuestion() {
+            const currentData = quizData[currentStep];
+            
+            // Atualiza Título com animação simples
+            questionText.style.opacity = '0';
+            
+            setTimeout(() => {
+                questionText.textContent = currentData.question;
+                questionText.style.opacity = '1';
+                
+                // Limpa e Adiciona Opções
+                optionsContainer.innerHTML = '';
+                currentData.options.forEach(option => {
+                    const btn = document.createElement('button');
+                    btn.className = 'option-btn';
+                    btn.textContent = option;
+                    btn.onclick = () => handleAnswer();
+                    optionsContainer.appendChild(btn);
+                });
+
+                // Atualiza Progresso
+                const progress = ((currentStep) / quizData.length) * 100;
+                progressBar.style.width = `${progress}%`;
+            }, 200);
+        }
+
+        // Lidar com a Resposta (Auto-advance)
+        function handleAnswer() {
+            if (currentStep < quizData.length - 1) {
+                currentStep++;
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        // Mostrar Resultado Final
+        function showResult() {
+            progressBar.style.width = `100%`;
+            quizScreen.style.opacity = '0';
+            
+            setTimeout(() => {
+                quizScreen.style.display = 'none';
+                resultScreen.style.display = 'block';
+                setTimeout(() => {
+                    resultScreen.style.opacity = '1';
+                    resultScreen.classList.add('fade-in');
+                }, 50);
+            }, 400);
+        }
+    </script>
 </body>
 </html>
