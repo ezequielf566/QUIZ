@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Avaliação Tributária Inicial - Identifique riscos e oportunidades.">
-    <title>Avaliação Tributária | Consultoria Especializada</title>
+    <meta name="description" content="Avaliação de Diagnóstico Tributário Especializado.">
+    <title>Diagnóstico Tributário | Avaliação Técnica de Cenários</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,7 @@
 
     <style>
         /* ========================================
-        SISTEMA DE DESIGN
+        DESIGN SYSTEM & VARIABLES
         ========================================
         */
         :root {
@@ -21,64 +21,45 @@
             --accent: #c19b67;
             --text-dark: #1e293b;
             --text-muted: #64748b;
-            --bg-body: #f8fafc;
+            --bg-body: #f1f5f9;
             --white: #ffffff;
             --border: #e2e8f0;
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-body);
             color: var(--text-dark);
             line-height: 1.6;
-            overflow-x: hidden;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        h1, h2, h3, .logo-text {
-            font-family: 'Playfair Display', serif;
-        }
+        h1, h2, h3, .logo-text { font-family: 'Playfair Display', serif; }
 
-        .container {
-            width: 100%;
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        .container { width: 100%; max-width: 650px; margin: 0 auto; padding: 0 20px; }
 
         /* ========================================
-        HEADER & LOGO (SVG + TYPO)
+        HEADER & LOGO (SVG)
         ========================================
         */
-        header {
-            padding: 40px 0;
-            text-align: center;
-        }
+        header { padding: 30px 0; text-align: center; }
 
         .logo-wrap {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
             text-decoration: none;
         }
 
-        .logo-svg {
-            width: 50px;
-            height: 50px;
-        }
+        .logo-svg { width: 45px; height: 45px; margin-bottom: 10px; }
 
         .logo-text {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--primary);
             letter-spacing: 1px;
@@ -87,49 +68,37 @@
 
         .logo-subtext {
             font-family: 'Inter', sans-serif;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 500;
             letter-spacing: 3px;
             color: var(--accent);
             text-transform: uppercase;
-            margin-top: -8px;
+            margin-top: -4px;
         }
 
         /* ========================================
-        COMPONENTES DE INTERFACE
+        MAIN CARD & QUIZ UX
         ========================================
         */
-        main {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            padding-bottom: 60px;
-        }
+        main { flex: 1; display: flex; align-items: center; padding: 20px 0 60px; }
 
         .card {
             background: var(--white);
-            border-radius: 8px;
-            padding: 48px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+            border-radius: 4px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
             border: 1px solid var(--border);
             width: 100%;
-            min-height: 450px;
+            min-height: 480px;
+            position: relative;
             display: flex;
             flex-direction: column;
-            position: relative;
-            transition: var(--transition);
         }
 
-        /* Barra de Progresso */
         .progress-container {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
+            top: 0; left: 0; width: 100%; height: 4px;
             background: var(--border);
-            border-radius: 8px 8px 0 0;
-            overflow: hidden;
             display: none;
         }
 
@@ -137,18 +106,18 @@
             height: 100%;
             background: var(--accent);
             width: 0%;
-            transition: width 0.5s ease;
+            transition: width 0.4s ease;
         }
 
-        /* Botões */
+        /* Buttons & Actions */
         .btn {
             display: inline-block;
-            padding: 18px 32px;
-            border-radius: 4px;
+            padding: 16px 28px;
+            border-radius: 3px;
             font-weight: 600;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             letter-spacing: 1px;
             cursor: pointer;
             transition: var(--transition);
@@ -156,99 +125,40 @@
             text-align: center;
         }
 
-        .btn-primary {
-            background-color: var(--primary);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-light);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(10, 25, 47, 0.2);
-        }
+        .btn-primary { background-color: var(--primary); color: var(--white); }
+        .btn-primary:hover { background-color: var(--primary-light); transform: translateY(-1px); }
 
         .btn-whatsapp {
             background-color: #25d366;
             color: var(--white);
-            font-size: 1rem;
-            width: 100%;
-        }
-
-        .btn-whatsapp:hover {
-            background-color: #128c7e;
-            transform: translateY(-2px);
-        }
-
-        /* ========================================
-        ESTADOS DO QUIZ (START, QUESTIONS, RESULT)
-        ========================================
-        */
-        
-        /* Intro */
-        #intro-screen {
-            text-align: center;
-        }
-
-        .card h1 {
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 16px;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            margin-bottom: 32px;
-            font-size: 1.05rem;
-        }
-
-        .features-list {
-            text-align: left;
-            max-width: 300px;
-            margin: 0 auto 40px;
-            list-style: none;
-        }
-
-        .features-list li {
-            margin-bottom: 12px;
             font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--text-dark);
+            width: auto;
+            margin: 20px auto 0;
+            padding: 14px 30px;
         }
 
-        .features-list li::before {
-            content: "✓";
-            color: var(--accent);
-            font-weight: bold;
-        }
+        .btn-whatsapp:hover { background-color: #128c7e; }
 
-        /* Questionário */
-        #quiz-screen {
-            display: none;
-            opacity: 0;
-        }
+        /* Quiz Logic UI */
+        #quiz-screen, #result-screen { display: none; opacity: 0; }
 
         .question-title {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             color: var(--primary);
-            margin-bottom: 32px;
-            line-height: 1.3;
+            margin-bottom: 25px;
+            line-height: 1.4;
+            min-height: 60px;
         }
 
-        .options-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+        .options-grid { display: flex; flex-direction: column; gap: 10px; }
 
         .option-btn {
             background: var(--white);
             border: 1px solid var(--border);
-            padding: 20px 24px;
-            border-radius: 6px;
+            padding: 18px 20px;
+            border-radius: 3px;
             text-align: left;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text-dark);
             cursor: pointer;
             transition: var(--transition);
@@ -259,45 +169,30 @@
 
         .option-btn:hover {
             border-color: var(--accent);
-            background: #fffcf9;
-            padding-left: 30px;
+            background: #fdfaf6;
+            color: var(--primary);
         }
 
-        .option-btn::after {
-            content: "→";
-            opacity: 0;
-            transition: var(--transition);
+        /* Result View */
+        .result-content { text-align: left; }
+        .result-tag {
             color: var(--accent);
-        }
-
-        .option-btn:hover::after {
-            opacity: 1;
-        }
-
-        /* Resultado */
-        #result-screen {
-            display: none;
-            text-align: center;
-            opacity: 0;
-        }
-
-        .result-icon {
-            font-size: 3rem;
-            color: var(--accent);
-            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
         }
 
         /* ========================================
         ANIMATIONS
         ========================================
         */
+        .fade-in { animation: fadeIn 0.4s forwards; }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.5s forwards;
         }
 
         /* ========================================
@@ -305,33 +200,11 @@
         ========================================
         */
         footer {
-            padding: 30px 0;
+            padding: 25px 0;
             text-align: center;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             border-top: 1px solid var(--border);
-        }
-
-        .disclaimer {
-            margin-top: 8px;
-            font-size: 0.75rem;
-            opacity: 0.8;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* ========================================
-        RESPONSIVIDADE
-        ========================================
-        */
-        @media (max-width: 600px) {
-            .card {
-                padding: 32px 24px;
-                min-height: auto;
-            }
-            .card h1 { font-size: 1.8rem; }
-            .question-title { font-size: 1.3rem; }
         }
     </style>
 </head>
@@ -341,13 +214,14 @@
         <div class="container">
             <a href="#" class="logo-wrap">
                 <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="20" y="20" width="60" height="60" stroke="#0a192f" stroke-width="2"/>
-                    <path d="M50 30V70" stroke="#0a192f" stroke-width="2"/>
-                    <path d="M35 45L50 30L65 45" stroke="#c19b67" stroke-width="3"/>
-                    <path d="M35 65H65" stroke="#0a192f" stroke-width="2"/>
+                    <path d="M50 20V80" stroke="#0a192f" stroke-width="2"/>
+                    <path d="M30 40H70" stroke="#0a192f" stroke-width="2"/>
+                    <path d="M30 40C30 30 70 30 70 40" stroke="#c19b67" stroke-width="2"/>
+                    <path d="M30 40C30 50 70 50 70 40" stroke="#c19b67" stroke-width="2"/>
+                    <rect x="40" y="70" width="20" height="5" fill="#0a192f"/>
                 </svg>
-                <span class="logo-text">Advocacia Tributária</span>
-                <span class="logo-subtext">Estrategistas Jurídicos</span>
+                <span class="logo-text">Diagnóstico Tributário</span>
+                <span class="logo-subtext">Consultoria Técnica</span>
             </a>
         </div>
     </header>
@@ -359,37 +233,38 @@
                     <div id="progress-bar"></div>
                 </div>
 
-                <div id="intro-screen" class="fade-in">
-                    <h1>Avaliação Tributária Inicial</h1>
-                    <p>Responda algumas perguntas rápidas para entender possíveis riscos ou oportunidades no seu cenário tributário.</p>
+                <div id="intro-screen" class="fade-in" style="text-align: center;">
+                    <h1 style="font-size: 2rem; margin-bottom: 15px; color: var(--primary);">Avaliação Estratégica</h1>
+                    <p style="margin-bottom: 30px; color: var(--text-muted);">Analise seu cenário fiscal em 7 etapas objetivas e identifique riscos ou pontos de otimização jurídica.</p>
                     
-                    <ul class="features-list">
-                        <li>Leve menos de 2 minutos</li>
-                        <li>Conteúdo educativo</li>
-                        <li>Sem compromisso</li>
-                    </ul>
-
-                    <button class="btn btn-primary" onclick="startQuiz()">Iniciar avaliação</button>
-                    
-                    <div class="disclaimer" style="margin-top: 40px;">
-                        Conteúdo informativo. Não substitui análise jurídica individual.
+                    <div style="text-align: left; background: #f8fafc; padding: 20px; border-radius: 4px; margin-bottom: 30px;">
+                        <small style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--primary);">O QUE SERÁ ANALISADO:</small>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">✓ Perfil de tributação atual<br>✓ Exposição a riscos de fiscalização<br>✓ Preparação para a Reforma Tributária</p>
                     </div>
+
+                    <button class="btn btn-primary" onclick="startQuiz()">Iniciar Diagnóstico</button>
                 </div>
 
                 <div id="quiz-screen">
-                    <h2 class="question-title" id="question-text">Pergunta aqui?</h2>
-                    <div class="options-grid" id="options-container">
-                        </div>
+                    <h2 class="question-title" id="question-text"></h2>
+                    <div class="options-grid" id="options-container"></div>
                 </div>
 
-                <div id="result-screen">
-                    <div class="result-icon">⚖️</div>
-                    <h1>Resultado da Avaliação</h1>
-                    <p>Com base nas suas respostas, é possível que existam pontos de atenção no seu cenário tributário. Uma análise individual ajuda a compreender riscos e oportunidades com mais clareza.</p>
+                <div id="result-screen" class="result-content">
+                    <span class="result-tag">Diagnóstico Concluído</span>
+                    <h1 id="result-title" style="font-size: 1.8rem; margin-bottom: 15px; color: var(--primary);"></h1>
+                    <p id="result-text" style="color: var(--text-muted); margin-bottom: 25px;"></p>
                     
-                    <a href="https://wa.me/559284899786" target="_blank" class="btn btn-whatsapp">
-                        Conversar no WhatsApp (sem compromisso)
-                    </a>
+                    <div style="background: #f4f7f6; padding: 20px; border-left: 3px solid var(--accent); margin-bottom: 25px;">
+                        <p style="font-size: 0.9rem; font-weight: 500; color: var(--primary);">Próximo passo recomendado:</p>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Agende uma breve conferência para detalhamento técnico dos pontos identificados.</p>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <a href="https://wa.me/559284899786" target="_blank" class="btn btn-whatsapp">
+                            Falar com Tributarista Especializado
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -397,110 +272,129 @@
 
     <footer>
         <div class="container">
-            <p>&copy; <span id="year"></span> — Conteúdo informativo. Atendimento mediante análise do caso.</p>
+            <p>&copy; <span id="year"></span> — Conteúdo Informativo | Atendimento mediante análise técnica individual.</p>
         </div>
     </footer>
 
     <script>
-        // Dados do Quiz
+        // Configuração das Perguntas
         const quizData = [
             {
-                question: "Você atua como:",
-                options: ["Pessoa Física", "Microempresa / MEI", "Empresa"]
+                q: "Qual a natureza da sua operação principal?",
+                options: ["Empresa (Indústria ou Comércio)", "Prestação de Serviços", "Pessoa Física / Profissional Liberal"]
             },
             {
-                question: "Sua empresa já enfrentou alguma das situações abaixo?",
-                options: ["Auto de infração", "Dúvidas sobre regime tributário", "Carga tributária elevada", "Nunca analisou"]
+                q: "Qual o regime de tributação atual?",
+                options: ["Lucro Real", "Lucro Presumido", "Simples Nacional / MEI"]
             },
             {
-                question: "Você já realizou algum planejamento tributário?",
-                options: ["Sim", "Não", "Não sei exatamente"]
+                q: "Como é feito o acompanhamento de créditos tributários?",
+                options: ["Revisão periódica (Créditos de PIS/COFINS, etc)", "Apenas apuração básica mensal", "Não realizamos recuperação de créditos"]
             },
             {
-                question: "Sua empresa acompanha mudanças na legislação tributária?",
-                options: ["Sim, regularmente", "Apenas quando surge um problema", "Não acompanha"]
+                q: "A empresa possui passivos tributários ou dívidas em aberto?",
+                options: ["Sim, em fase de negociação/parcelamento", "Sim, sem estratégia de regularização", "Não possuímos passivos"]
             },
             {
-                question: "Gostaria de entender melhor seu cenário tributário?",
-                options: ["Sim", "Talvez", "Apenas estou me informando"]
+                q: "Qual o maior desafio fiscal hoje?",
+                options: ["Alta carga tributária", "Receio de autuações/multas", "Complexidade na gestão de impostos"]
+            },
+            {
+                q: "Sua estrutura já foi analisada para a Reforma Tributária?",
+                options: ["Sim, já temos projeções", "Estamos acompanhando, mas sem análise", "Ainda não iniciamos a preparação"]
+            },
+            {
+                q: "Deseja uma análise técnica sobre as oportunidades identificadas?",
+                options: ["Sim, tenho urgência", "Gostaria de uma avaliação preliminar", "Apenas informativo"]
             }
         ];
 
         let currentStep = 0;
+        let userChoices = [];
 
-        // Elementos DOM
-        const introScreen = document.getElementById('intro-screen');
-        const quizScreen = document.getElementById('quiz-screen');
-        const resultScreen = document.getElementById('result-screen');
-        const progressWrapper = document.getElementById('progress-wrapper');
-        const progressBar = document.getElementById('progress-bar');
-        const questionText = document.getElementById('question-text');
-        const optionsContainer = document.getElementById('options-container');
+        // Elementos
+        const yearSpan = document.getElementById('year');
+        const intro = document.getElementById('intro-screen');
+        const quiz = document.getElementById('quiz-screen');
+        const result = document.getElementById('result-screen');
+        const progBar = document.getElementById('progress-bar');
+        const progWrap = document.getElementById('progress-wrapper');
+        const qText = document.getElementById('question-text');
+        const optCont = document.getElementById('options-container');
 
-        // Inicializar Ano
-        document.getElementById('year').textContent = new Date().getFullYear();
+        yearSpan.textContent = new Date().getFullYear();
 
-        // Iniciar Quiz
         function startQuiz() {
-            introScreen.style.display = 'none';
-            quizScreen.style.display = 'block';
-            progressWrapper.style.display = 'block';
+            intro.style.display = 'none';
+            quiz.style.display = 'block';
+            progWrap.style.display = 'block';
+            setTimeout(() => { quiz.style.opacity = '1'; showQuestion(); }, 50);
+        }
+
+        function showQuestion() {
+            const data = quizData[currentStep];
+            qText.classList.remove('fade-in');
+            
             setTimeout(() => {
-                quizScreen.style.opacity = '1';
-                showQuestion();
+                qText.textContent = data.q;
+                qText.classList.add('fade-in');
+                optCont.innerHTML = '';
+                
+                data.options.forEach((opt, idx) => {
+                    const b = document.createElement('button');
+                    b.className = 'option-btn fade-in';
+                    b.style.animationDelay = `${idx * 0.1}s`;
+                    b.innerHTML = `<span>${opt}</span> <small style="color:var(--accent)">→</small>`;
+                    b.onclick = () => selectOption(opt);
+                    optCont.appendChild(b);
+                });
+
+                progBar.style.width = `${((currentStep) / quizData.length) * 100}%`;
             }, 50);
         }
 
-        // Mostrar Pergunta
-        function showQuestion() {
-            const currentData = quizData[currentStep];
-            
-            // Atualiza Título com animação simples
-            questionText.style.opacity = '0';
-            
-            setTimeout(() => {
-                questionText.textContent = currentData.question;
-                questionText.style.opacity = '1';
-                
-                // Limpa e Adiciona Opções
-                optionsContainer.innerHTML = '';
-                currentData.options.forEach(option => {
-                    const btn = document.createElement('button');
-                    btn.className = 'option-btn';
-                    btn.textContent = option;
-                    btn.onclick = () => handleAnswer();
-                    optionsContainer.appendChild(btn);
-                });
-
-                // Atualiza Progresso
-                const progress = ((currentStep) / quizData.length) * 100;
-                progressBar.style.width = `${progress}%`;
-            }, 200);
-        }
-
-        // Lidar com a Resposta (Auto-advance)
-        function handleAnswer() {
+        function selectOption(val) {
+            userChoices.push(val);
             if (currentStep < quizData.length - 1) {
                 currentStep++;
                 showQuestion();
             } else {
-                showResult();
+                processResult();
             }
         }
 
-        // Mostrar Resultado Final
-        function showResult() {
-            progressBar.style.width = `100%`;
-            quizScreen.style.opacity = '0';
+        function processResult() {
+            progBar.style.width = '100%';
+            quiz.style.opacity = '0';
             
             setTimeout(() => {
-                quizScreen.style.display = 'none';
-                resultScreen.style.display = 'block';
-                setTimeout(() => {
-                    resultScreen.style.opacity = '1';
-                    resultScreen.classList.add('fade-in');
-                }, 50);
+                quiz.style.display = 'none';
+                generateDynamicText();
+                result.style.display = 'block';
+                setTimeout(() => result.style.opacity = '1', 50);
             }, 400);
+        }
+
+        function generateDynamicText() {
+            const rTitle = document.getElementById('result-title');
+            const rText = document.getElementById('result-text');
+
+            // Lógica de Personalização Objetiva
+            const isCompany = userChoices[0].includes("Empresa");
+            const hasPassives = userChoices[3].includes("Sim");
+            const needsReform = userChoices[5].includes("Ainda não");
+            const urgent = userChoices[6].includes("urgência");
+
+            if (urgent || hasPassives) {
+                rTitle.textContent = "Cenário de Atenção e Regularização";
+                rText.textContent = "Identificamos que seu cenário exige uma revisão imediata de procedimentos fiscais. A existência de passivos ou a urgência em novas análises sugere que medidas preventivas podem evitar custos extraordinários e garantir a fluidez da operação.";
+            } else if (isCompany && needsReform) {
+                rTitle.textContent = "Estratégia de Transição e Eficiência";
+                rText.textContent = "Sua operação possui um perfil sólido, porém a ausência de um planejamento para a Reforma Tributária pode gerar perda de competitividade. Existe espaço para otimização de créditos e estruturação preventiva para as novas alíquotas.";
+            } else {
+                rTitle.textContent = "Oportunidades de Otimização Fiscal";
+                rText.textContent = "Seu perfil indica uma gestão ativa, mas sempre há margem para refinamento técnico. Uma análise detalhada pode revelar créditos não aproveitados e blindagem jurídica adicional contra mudanças repentinas na legislação.";
+            }
         }
     </script>
 </body>
